@@ -41,7 +41,7 @@ def q_table_of_each_goal_show(Q_table, action_space, width, height):
 
     # 描画範囲の設定と目盛りを消す設定
     ax.set_xlim(0, width)
-    ax.set_ylim(height + 1, 0)
+    ax.set_ylim(height, 0)
     plt.tick_params(axis='both', which='both', bottom='off', top='off',
                     labelbottom='off', right='off', left='off', labelleft='off')
 
@@ -51,6 +51,6 @@ def q_table_of_each_goal_show(Q_table, action_space, width, height):
     # 5刻みに目盛り表示
     plt.xticks(list(range(width)))
     # 0.1刻みに目盛り表示
-    plt.yticks(list(range(height + 1)))
+    plt.yticks(list(range(height)))
     plt.grid()
     plt.show()
