@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 from Environment import MazeEnvironment
+import numpy as np
 
 def print_maze(maze_masess):
     for masses_low in maze_masess:
@@ -7,9 +8,8 @@ def print_maze(maze_masess):
             print(int(mass), " ", end="")
         print()
  
-def q_table_of_each_goal_show(Q_table, action_space, width, height):
-
-    fig = plt.figure(figsize=(width, height))
+def q_table_of_each_goal_draw(Q_table, action_space, width, height, states = None):
+    plt.clf()
     ax = plt.gca()
     for i in range(width):
         for j in range(height):
@@ -37,11 +37,13 @@ def q_table_of_each_goal_show(Q_table, action_space, width, height):
                     action_name = '→'
                 plt.text(j + 0.5, i + action_position, '{}: {:.2g}'.format(action_name, Q_value_action),
                          size=14, ha='center', va='center', )
-
-
+    if states:
+        for state in states:
+            x = np.arange(state[0], state[0]+1, 0.01)
+            plt.fill_between(x, state[1], state[1]+1, facecolor='y', alpha=0.5)
     # 描画範囲の設定と目盛りを消す設定
     ax.set_xlim(0, width)
-    ax.set_ylim(height + 1, 0)
+    ax.set_ylim(height, 0)
     plt.tick_params(axis='both', which='both', bottom='off', top='off',
                     labelbottom='off', right='off', left='off', labelleft='off')
 
@@ -51,6 +53,9 @@ def q_table_of_each_goal_show(Q_table, action_space, width, height):
     # 5刻みに目盛り表示
     plt.xticks(list(range(width)))
     # 0.1刻みに目盛り表示
-    plt.yticks(list(range(height + 1)))
+    plt.yticks(list(range(height)))
     plt.grid()
-    plt.show()
+    # グラフ描画
+    plt.pause(0.000001)
+    plt.draw()
+#    plt.show()
