@@ -39,8 +39,8 @@ def q_table_of_each_goal_draw(Q_table, action_space, width, height, states = Non
                          size=14, ha='center', va='center', )
     if states:
         for state in states:
-            x = np.arange(state[0], state[0]+1, 0.01)
-            plt.fill_between(x, state[1], state[1]+1, facecolor='y', alpha=0.5)
+            x = np.arange(state[1], state[1]+1, 0.01)
+            plt.fill_between(x, state[0], state[0]+1, facecolor='y', alpha=0.5)
     # 描画範囲の設定と目盛りを消す設定
     ax.set_xlim(0, width)
     ax.set_ylim(height, 0)
@@ -56,6 +56,6 @@ def q_table_of_each_goal_draw(Q_table, action_space, width, height, states = Non
     plt.yticks(list(range(height)))
     plt.grid()
     # グラフ描画
-    plt.pause(0.000001)
+    plt.pause(0.0000001)
     plt.draw()
 #    plt.show()

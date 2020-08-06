@@ -13,7 +13,7 @@ def main():
     parser.add_argument('--num_steps', type=int, default=50, help='number of steps in each episode (default: 50)')
     parser.add_argument('--max_w', type=int, default=5, help='maze width (default: 5)')
     parser.add_argument('--max_h', type=int, default=5, help='maze height (default: 5)')
-    parser.add_argument('--nepisodes', type=int, default=5000,
+    parser.add_argument('--nepisodes', type=int, default=2000,
                         help='number of training episodes (default: 5000)')
     args = parser.parse_args()
 
@@ -25,7 +25,7 @@ def main():
     train(envirornment, agent, args.nepisodes)
     fig = plt.figure(figsize=(envirornment.width, envirornment.height))
     Util.print_maze(envirornment.masses)
-    #Util.q_table_of_each_goal_show(agent.Q_table, action_space, envirornment.width, envirornment.height)
+    Util.q_table_of_each_goal_draw(agent.Q_table, action_space, envirornment.width, envirornment.height)
 
 if __name__ == "__main__":
     main()

@@ -14,7 +14,7 @@ def train(env, agent, nepisodes):
             observation_state = next_state
             observation_states.append(observation_state)
             if finished:
-                if i % 10 == 0:
+                if i % 100 == 0:
                     Util.q_table_of_each_goal_draw(agent.Q_table, env.actions(), env.width, env.height, observation_states)
                 break
     plt.show()
